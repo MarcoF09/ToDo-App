@@ -3,6 +3,7 @@ import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
 import {StatusBar,View, TouchableOpacity, Text, TextInput } from 'react-native';
 
+
 export class NewTask extends Component {
   constructor(props){
     super(props);
@@ -14,7 +15,9 @@ export class NewTask extends Component {
       firstInputText: '',
       secondInputText: '',    
     };
-    StatusBar.setBackgroundColor('#1f86ff');
+    if(Platform.OS == 'android'){
+      StatusBar.setBackgroundColor('#1f86ff');
+    }
 
   }
 

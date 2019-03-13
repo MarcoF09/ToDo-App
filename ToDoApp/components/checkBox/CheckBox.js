@@ -7,6 +7,7 @@ import checkboxinactive from '../../resources/images/iconCheckboxInactive.png';
 
 
 
+
 export class CheckBox extends Component {
     render() {
       return (

@@ -40,7 +40,6 @@ class Home extends Component {
         }
     }
 
-
   static navigationOptions = ({navigation}) => ({
     title: 'Home',
     headerLeft: (<View />),
@@ -75,13 +74,19 @@ class Home extends Component {
       this.setState({ data: dataModified });
   }
 
+  _handleCheckBoxClick(index){
+      this.state.data[index].status = !this.state.data[index].status;
+      let dataModified = this.state.data;
+      this.setState({ data: dataModified });
+  }
+
   render() {
     return (
       <View >
         <StatusBar backgroundColor={Colors.customBlue}/>
         <ScrollView >
         { 
-            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}}/>)
+            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}} checkboxClick = {() => this._handleCheckBoxClick(index)} />)
         }
         </ScrollView>
         {
