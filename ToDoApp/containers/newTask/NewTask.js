@@ -13,7 +13,9 @@ export class NewTask extends Component {
       firstInputText: '',
       secondInputText: '',    
     };
-    StatusBar.setBackgroundColor('#1f86ff');
+    if(Platform.OS == 'android'){
+      StatusBar.setBackgroundColor('#1f86ff');
+    }
 
   }
 
