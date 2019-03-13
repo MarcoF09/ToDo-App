@@ -10,35 +10,35 @@ import {styles} from './styles';
 
 class Home extends Component {
   constructor(props){
-      super(props);
-      this.state = {
-          data:[{
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': false
-        },
-        {
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': false
-        },
-        {
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': false
-        },
-        {
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': true
-        }, 
-        {
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': false
-        }]
+        super(props);
+        this.state = {
+            data:[{
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': false
+            },
+            {
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': false
+            },
+            {
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': false
+            },
+            {
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': true
+            }, 
+            {
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': false
+            }]
+        }
     }
-  }
 
   static navigationOptions = ({navigation}) => ({
     title: 'Home',
@@ -47,6 +47,7 @@ class Home extends Component {
         <View style={styles.headerRightContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('NewTask',{handleAddData: navigation.getParam('addData')})}>
                 <Text style = {styles.headerRightText}>+</Text>
+
             </TouchableOpacity>
         </View>
       ),
@@ -62,7 +63,6 @@ class Home extends Component {
     let joined = this.state.data.concat({'first-description': taskTitle, 'second-description': taskDescription,status: false});
     this.setState({ data: joined });
   }
-
   render() {
     return (
       <View >

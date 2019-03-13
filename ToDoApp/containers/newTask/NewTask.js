@@ -12,7 +12,6 @@ export class NewTask extends Component {
       firstInputText: '',
       secondInputText: '',    
     };
-
   }
 
   static navigationOptions = ({navigation}) => ({
@@ -44,6 +43,7 @@ export class NewTask extends Component {
     this.props.navigation.setParams({firstInput: text});
     this.setState({firstInputText: text});
   }
+
   onChangeDescription = (text) => {
     this.props.navigation.setParams({secondInput: text});
     this.setState({secondInputText: text});
