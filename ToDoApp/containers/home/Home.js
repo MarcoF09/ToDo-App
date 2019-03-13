@@ -80,6 +80,11 @@ class Home extends Component {
       this.setState({ data: dataModified });
   }
 
+  _handleClearAllDone(){
+      let dataModified = this.state.data.map((element) => {element.status = false; return element;});
+      this.setState({ data: dataModified });
+  }
+
   render() {
     return (
       <View >
