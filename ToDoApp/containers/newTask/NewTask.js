@@ -12,7 +12,10 @@ export class NewTask extends Component {
       firstInputText: '',
       secondInputText: '',    
     };
+    StatusBar.setBackgroundColor('#1f86ff');
+
   }
+
   static navigationOptions = ({navigation}) => ({
     title: 'New Task',
     headerRight: (
@@ -37,9 +40,15 @@ export class NewTask extends Component {
     ),
   });
 
-  addTask(navigation){
-    navigation.push('Home');
+  firstInputOnChange(text){
+    this.props.navigation.setParams({firstInput: text});
+    this.setState({firstInputText: text});
   }
+  secondInputOnChange(text){
+    this.props.navigation.setParams({secondInput: text});
+    this.setState({secondInputText: text});
+  }
+
   onFocus(input){
     if (input == 'first'){
       this.setState({
@@ -63,6 +72,7 @@ export class NewTask extends Component {
       });
     }
   }
+  
   render() {
     return (
       <View style = {styles.container}>
@@ -71,6 +81,7 @@ export class NewTask extends Component {
           style={{borderBottomWidth:1, borderBottomColor:this.state.firstInputColor, fontSize: 36, color: Colors.black, fontFamily: 'SourceSansPro-Regular',}}
           placeholder="Task title"     
           multiline = {false}
+          onChangeText={(text) => this.firstInputOnChange(text)}
         />
         <TextInput 
           onFocus ={() => this.onFocus('second')} onBlur ={() => this.onBlur('second')}
@@ -78,6 +89,7 @@ export class NewTask extends Component {
           placeholder = 'Task Description'
           multiline = {true}
           numberOfLines = {5}
+          onChangeText={(text) => this.secondInputOnChange(text)}
         />
       </View>
     );
