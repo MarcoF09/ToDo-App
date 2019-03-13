@@ -9,9 +9,12 @@ export class NewTask extends Component {
     this.state = {
       firstInputColor:Colors.lightGrey,
       secondInputColor:Colors.lightGrey,  
+
       firstInputText: '',
       secondInputText: '',    
     };
+    StatusBar.setBackgroundColor('#1f86ff');
+
   }
 
   static navigationOptions = ({navigation}) => ({
@@ -27,6 +30,7 @@ export class NewTask extends Component {
             alignItems: 'flex-start'}
             }>
               <Text style = {{color: Colors.white, fontSize: 17, lineHeight:20}}>Save</Text>
+
           </TouchableOpacity>
       </View>
     ),
