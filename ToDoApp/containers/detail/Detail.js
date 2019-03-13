@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet } from 'react-native';
-import ButtonCustom from '../../components/button/ButtonCustom';
+import {styles} from './styles';
+import {Colors} from '../../colors/Colors';
+import {Platform,StatusBar, View, Text, StyleSheet } from 'react-native';
+import {ButtonCustom} from '../../components/button/ButtonCustom';
 
-class Detail extends Component {
+export class Detail extends Component {
+  constructor(props){
+    super(props);
+    if(Platform.OS == 'android'){
+      StatusBar.setBackgroundColor(Colors.customBlue);
+    }
+  }
   static navigationOptions = {
     title: 'Detail',
     headerRight: (<View />),
@@ -21,30 +29,3 @@ class Detail extends Component {
     );
   }
 }
-
-module.exports = Detail;
-
-const styles = StyleSheet.create({
-    container: {
-        padding:16, 
-        flexDirection: 'column',
-        borderWidth: 1,
-        borderColor: '#f0f0f0',
-    },
-    textContainer: {
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-    },
-    primaryText: {
-        lineHeight: 54,
-        fontSize: 36,
-        color: 'black',
-        fontFamily: 'SourceSansPro-Regular',
-    },
-    secondaryText: {
-        lineHeight: 20,
-        fontSize: 14,
-        color: '#959595',
-        fontFamily: 'SourceSansPro-Regular',
-    },
-  });
