@@ -77,6 +77,11 @@ class Home extends Component {
       this.setState({ data: dataModified });
   }
 
+  _handleClearAllDone(){
+      let dataModified = this.state.data.map((element) => {element.status = false; return element;});
+      this.setState({ data: dataModified });
+  }
+
   render() {
     return (
       <View >
@@ -88,7 +93,6 @@ class Home extends Component {
         </ScrollView>
         {
             this.state.data.length > 0 ? <ButtonCustom text = "CLEAR ALL DONE" styleButton = {styles.button}/> : <Text style = {styles.primaryText}>No task to display, please add a task!</Text>
-
         }
       </View>
     );
