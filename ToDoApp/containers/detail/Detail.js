@@ -4,6 +4,7 @@ import {Colors} from '../../colors/Colors';
 import {StatusBar, View, Text, StyleSheet } from 'react-native';
 import {ButtonCustom} from '../../components/button/ButtonCustom';
 
+
 export class Detail extends Component {
   constructor(props){
     super(props);

@@ -14,7 +14,7 @@ export class Item extends Component {
             <Text style = {styles.primaryText} >{this.props['first-description']}</Text>
             <Text style = {styles.secondaryText}>{this.props['second-description']}</Text>
         </ View>
-        <CheckBox checked = {this.props['status']}/>
+        <CheckBox checked = {this.props['status']} click = {this.props.checkboxClick}/>
       </View>
       </TouchableOpacity>
     );

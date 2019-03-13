@@ -63,13 +63,20 @@ class Home extends Component {
     let joined = this.state.data.concat({'first-description': taskTitle, 'second-description': taskDescription,status: false});
     this.setState({ data: joined });
   }
+
+  _handleCheckBoxClick(index){
+      this.state.data[index].status = !this.state.data[index].status;
+      let dataModified = this.state.data;
+      this.setState({ data: dataModified });
+  }
+
   render() {
     return (
       <View >
         <StatusBar backgroundColor={Colors.customBlue}/>
         <ScrollView >
         { 
-            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}}/>)
+            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}} checkboxClick = {() => this._handleCheckBoxClick(index)} />)
         }
         </ScrollView>
         {
