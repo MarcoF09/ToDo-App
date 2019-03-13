@@ -40,6 +40,7 @@ class Home extends Component {
         }
     }
 
+
   static navigationOptions = ({navigation}) => ({
     title: 'Home',
     headerLeft: (<View />),
@@ -47,7 +48,6 @@ class Home extends Component {
         <View style={styles.headerRightContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('NewTask',{handleAddData: navigation.getParam('addData')})}>
                 <Text style = {styles.headerRightText}>+</Text>
-
             </TouchableOpacity>
         </View>
       ),
@@ -68,7 +68,6 @@ class Home extends Component {
       this.state.data[index].status = !this.state.data[index].status;
       let dataModified = this.state.data;
       this.setState({ data: dataModified });
-
   }
 
   _handleClearAllDone = () => {
@@ -82,7 +81,7 @@ class Home extends Component {
         <StatusBar backgroundColor={Colors.customBlue}/>
         <ScrollView >
         { 
-            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}} checkboxClick = {() => this._handleCheckBoxClick(index)} />)
+            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}}/>)
         }
         </ScrollView>
         {
@@ -111,4 +110,3 @@ const MainNavigator = createStackNavigator(
 );
   
 export const AppNavigator = createAppContainer(MainNavigator);
-
