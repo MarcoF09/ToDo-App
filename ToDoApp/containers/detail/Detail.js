@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
-import {Platform,StatusBar, View, Text, StyleSheet } from 'react-native';
+import {StatusBar, View, Text, StyleSheet } from 'react-native';
 import {ButtonCustom} from '../../components/button/ButtonCustom';
 
 export class Detail extends Component {
   constructor(props){
     super(props);
-    if(Platform.OS == 'android'){
-      StatusBar.setBackgroundColor(Colors.customBlue);
-    }
   }
   static navigationOptions = {
     title: 'Detail',
@@ -19,6 +16,7 @@ export class Detail extends Component {
     const { navigation } = this.props;
     return (
       <View style = {styles.container}>
+        <StatusBar backgroundColor={Colors.customBlue}/>
         <View style ={{alignItems: 'flex-start'}}>
             <ButtonCustom text = "Not done"/>
         </View>

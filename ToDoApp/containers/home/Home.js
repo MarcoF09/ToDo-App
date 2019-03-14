@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TouchableOpacity, Text, View, ScrollView} from 'react-native';
+import {StatusBar,TouchableOpacity, Text, View, ScrollView} from 'react-native';
 import {Colors} from '../../colors/Colors';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import {Item} from '../../components/item/Item';
@@ -8,41 +8,44 @@ import {Detail} from '../detail/Detail';
 import {NewTask} from '../newTask/NewTask';
 import {styles} from './styles';
 
-var data = [
-    {
-        'first-description': 'Description',
-        'second-description': 'Second Description',
-        'status': false
-    },
-    {
-        'first-description': 'Description',
-        'second-description': 'Second Description',
-        'status': false
-    },
-    {
-        'first-description': 'Description',
-        'second-description': 'Second Description',
-        'status': false
-    },
-    {
-        'first-description': 'Description',
-        'second-description': 'Second Description',
-        'status': true
-    }, 
-    {
-        'first-description': 'Description',
-        'second-description': 'Second Description',
-        'status': false
-    }
-];
-
 class Home extends Component {
+  constructor(props){
+      super(props);
+      this.state = {
+          data:[{
+            'first-description': 'Description',
+            'second-description': 'Second Description',
+            'status': false
+        },
+        {
+            'first-description': 'Description',
+            'second-description': 'Second Description',
+            'status': false
+        },
+        {
+            'first-description': 'Description',
+            'second-description': 'Second Description',
+            'status': false
+        },
+        {
+            'first-description': 'Description',
+            'second-description': 'Second Description',
+            'status': true
+        }, 
+        {
+            'first-description': 'Description',
+            'second-description': 'Second Description',
+            'status': false
+        }]
+    }
+  }
+
   static navigationOptions = ({navigation}) => ({
     title: 'Home',
     headerLeft: (<View />),
     headerRight: (
         <View style={styles.headerRightContainer}>
-            <TouchableOpacity onPress={() => navigation.push('NewTask')}>
+            <TouchableOpacity onPress={() => navigation.navigate('NewTask',{handleAddData: navigation.getParam('addData')})}>
                 <Text style = {styles.headerRightText}>+</Text>
             </TouchableOpacity>
         </View>
@@ -51,15 +54,27 @@ class Home extends Component {
 
   onPressFuction = (item) => { this.props.navigation.push('Details', {...item}) }
   
+  componentDidMount(){
+    this.props.navigation.setParams({addData: this._handleAddData});
+  }
+
+  _handleAddData = (taskTitle,taskDescription) => {
+    let joined = this.state.data.concat({'first-description': taskTitle, 'second-description': taskDescription,status: false});
+    this.setState({ data: joined });
+  }
+
   render() {
     return (
       <View >
+        <StatusBar backgroundColor={Colors.customBlue}/>
         <ScrollView >
         { 
-            data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> this.onPressFuction(item)}/>)
+            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}}/>)
         }
         </ScrollView>
-        <ButtonCustom text = "CLEAR ALL DONE" styleButton = {styles.button}/>
+        {
+            this.state.data.length > 0 ? <ButtonCustom text = "CLEAR ALL DONE" styleButton = {styles.button}/> : <Text style = {styles.primaryText}>No task to display, please add a task!</Text>
+        }
       </View>
     );
   }
