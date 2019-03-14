@@ -19,11 +19,11 @@ export class Detail extends Component {
       <View style = {styles.container}>
         <StatusBar backgroundColor={Colors.customBlue}/>
         <View style ={{alignItems: 'flex-start'}}>
-            <ButtonCustom text = "Not done"/>
+            <ButtonCustom text = "Not done" _onPress = {navigation.getParam('handleNotDone')}/>
         </View>
         <Text style = {styles.primaryText}>{navigation.getParam('first-description')}</Text>
         <Text style = {styles.secondaryText}>{navigation.getParam('second-description')}</Text>
-        <ButtonCustom text = "MARK AS DONE" />
+        <ButtonCustom text = "MARK AS DONE" _onPress = {navigation.getParam('handleMarkAsDone')}/>
       </View>
     );
   }

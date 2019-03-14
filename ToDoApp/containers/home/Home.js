@@ -59,6 +59,7 @@ class Home extends Component {
   }
 
   _handleAddData = (taskTitle,taskDescription) => {
+
     let joined = this.state.data.concat({'first-description': taskTitle, 'second-description': taskDescription,status: false});
     this.setState({ data: joined });
   }
@@ -73,7 +74,7 @@ class Home extends Component {
       let dataModified = this.state.data.map((element) => {element.status = false; return element;});
       this.setState({ data: dataModified });
   }
-
+  //Home handles
   _handleCheckBoxClick(index){
       this.state.data[index].status = !this.state.data[index].status;
       let dataModified = this.state.data;
@@ -84,6 +85,22 @@ class Home extends Component {
       let dataModified = this.state.data.map((element) => {element.status = false; return element;});
       this.setState({ data: dataModified });
   }
+  //Detail handles
+  _handleNotDone(index){
+    this.state.data[index].status = false;
+    let dataModified = this.state.data;
+    this.setState({ data: dataModified });
+    this.props.navigation.pop();
+
+  }
+
+  _handleMarkAsDone(index){
+    this.state.data[index].status = true;
+    let dataModified = this.state.data;
+    this.setState({ data: dataModified });
+    this.props.navigation.pop();
+
+  }
 
   render() {
     return (
@@ -91,7 +108,11 @@ class Home extends Component {
         <StatusBar backgroundColor={Colors.customBlue}/>
         <ScrollView >
         { 
-            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}} checkboxClick = {() => this._handleCheckBoxClick(index)} />)
+            this.state.data.map((item,index) => <Item {...item} 
+                                                    key = {index} 
+                                                    _onPress ={()=> {this.props.navigation.push('Details',{...item,handleNotDone:() => {this._handleNotDone(index)},handleMarkAsDone: () => {this._handleMarkAsDone(index)}})}} 
+                                                    checkboxClick = {() => this._handleCheckBoxClick(index)} 
+                                                    />)
         }
         </ScrollView>
         {
