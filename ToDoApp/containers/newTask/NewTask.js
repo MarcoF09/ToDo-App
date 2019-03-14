@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
-import {Platform,StatusBar,View, TouchableOpacity, Text, TextInput, StyleSheet } from 'react-native';
+import {StatusBar,View, TouchableOpacity, Text, TextInput, StyleSheet } from 'react-native';
 
 export class NewTask extends Component {
   constructor(props){
@@ -12,7 +12,6 @@ export class NewTask extends Component {
       firstInputText: '',
       secondInputText: '',    
     };
-    StatusBar.setBackgroundColor('#1f86ff');
 
   }
 
@@ -22,6 +21,7 @@ export class NewTask extends Component {
     <View style={{width:50,height:20}}>
           <TouchableOpacity onPress={() => {
                   navigation.getParam('handleAddData')(navigation.getParam('firstInput'),navigation.getParam('secondInput'));
+                  navigation.pop();
             }} 
             underlayColor={Colors.white} 
             style = {{flex: 1, 
@@ -40,16 +40,16 @@ export class NewTask extends Component {
     ),
   });
 
-  firstInputOnChange(text){
+  onChangeTitle = (text) => {
     this.props.navigation.setParams({firstInput: text});
     this.setState({firstInputText: text});
   }
-  secondInputOnChange(text){
+  onChangeDescription = (text) => {
     this.props.navigation.setParams({secondInput: text});
     this.setState({secondInputText: text});
   }
 
-  onFocus(input){
+  onFocus = (input) => {
     if (input == 'first'){
       this.setState({
         firstInputColor: Colors.pink
@@ -61,7 +61,7 @@ export class NewTask extends Component {
     }
 
   }
-  onBlur(input){
+  onBlur = (input) => {
     if (input == 'first'){
       this.setState({
         firstInputColor: Colors.lightGrey
@@ -76,12 +76,13 @@ export class NewTask extends Component {
   render() {
     return (
       <View style = {styles.container}>
+        <StatusBar backgroundColor={Colors.customBlue}/>
         <TextInput
           onFocus ={() => this.onFocus('first')} onBlur ={() => this.onBlur('first')}
           style={{borderBottomWidth:1, borderBottomColor:this.state.firstInputColor, fontSize: 36, color: Colors.black, fontFamily: 'SourceSansPro-Regular',}}
           placeholder="Task title"     
           multiline = {false}
-          onChangeText={(text) => this.firstInputOnChange(text)}
+          onChangeText={(text) => this.onChangeTitle(text)}
         />
         <TextInput 
           onFocus ={() => this.onFocus('second')} onBlur ={() => this.onBlur('second')}
@@ -89,7 +90,7 @@ export class NewTask extends Component {
           placeholder = 'Task Description'
           multiline = {true}
           numberOfLines = {5}
-          onChangeText={(text) => this.secondInputOnChange(text)}
+          onChangeText={(text) => this.onChangeDescription(text)}
         />
       </View>
     );
