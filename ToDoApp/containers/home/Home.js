@@ -47,7 +47,6 @@ class Home extends Component {
         <View style={styles.headerRightContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('NewTask',{handleAddData: navigation.getParam('addData')})}>
                 <Text style = {styles.headerRightText}>+</Text>
-
             </TouchableOpacity>
         </View>
       ),
@@ -64,7 +63,7 @@ class Home extends Component {
     this.setState({ data: joined });
   }
 
-  _handleCheckBoxClick(index){
+  _handleCheckBoxClick = (index) => {
       this.state.data[index].status = !this.state.data[index].status;
       let dataModified = this.state.data;
       this.setState({ data: dataModified });
