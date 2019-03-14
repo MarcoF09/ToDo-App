@@ -10,35 +10,35 @@ import {styles} from './styles';
 
 class Home extends Component {
   constructor(props){
-      super(props);
-      this.state = {
-          data:[{
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': false
-        },
-        {
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': false
-        },
-        {
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': false
-        },
-        {
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': true
-        }, 
-        {
-            'first-description': 'Description',
-            'second-description': 'Second Description',
-            'status': false
-        }]
+        super(props);
+        this.state = {
+            data:[{
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': false
+            },
+            {
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': false
+            },
+            {
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': false
+            },
+            {
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': true
+            }, 
+            {
+                'first-description': 'Description',
+                'second-description': 'Second Description',
+                'status': false
+            }]
+        }
     }
-  }
 
   static navigationOptions = ({navigation}) => ({
     title: 'Home',
@@ -63,13 +63,19 @@ class Home extends Component {
     this.setState({ data: joined });
   }
 
+  _handleCheckBoxClick = (index) => {
+      this.state.data[index].status = !this.state.data[index].status;
+      let dataModified = this.state.data;
+      this.setState({ data: dataModified });
+  }
+
   render() {
     return (
       <View >
         <StatusBar backgroundColor={Colors.customBlue}/>
         <ScrollView >
         { 
-            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}}/>)
+            this.state.data.map((item,index) => <Item {...item} key = {index} _onPress ={()=> {this.props.navigation.push('Details',{...item})}} checkboxClick = {() => this._handleCheckBoxClick(index)} />)
         }
         </ScrollView>
         {
