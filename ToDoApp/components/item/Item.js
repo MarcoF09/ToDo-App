@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
-import {TouchableOpacity,Text, View, StyleSheet} from 'react-native';
+import {TouchableOpacity,Text, View} from 'react-native';
 import {CheckBox} from '../checkBox/CheckBox';
 
 export class Item extends Component {

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
-import {StatusBar, View, Text, StyleSheet } from 'react-native';
+import {StatusBar, View, Text } from 'react-native';
 import {ButtonCustom} from '../../components/button/ButtonCustom';
-
 
 export class Detail extends Component {
   constructor(props){

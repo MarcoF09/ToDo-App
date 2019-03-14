@@ -14,8 +14,6 @@ export class CheckBox extends Component {
           <TouchableOpacity onPress = {this.props.click}>
             {
                 this.props.checked ? <Image  source = {checkboxActive} /> : <Image source = {checkboxinactive} />
-
-
             }
           </TouchableOpacity>
         </View>

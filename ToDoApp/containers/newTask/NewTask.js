@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
-import {StatusBar,View, TouchableOpacity, Text, TextInput, StyleSheet } from 'react-native';
+import {StatusBar,View, TouchableOpacity, Text, TextInput } from 'react-native';
 
 export class NewTask extends Component {
   constructor(props){
@@ -13,10 +13,6 @@ export class NewTask extends Component {
       firstInputText: '',
       secondInputText: '',    
     };
-    if(Platform.OS == 'android'){
-      StatusBar.setBackgroundColor('#1f86ff');
-    }
-
   }
 
   static navigationOptions = ({navigation}) => ({

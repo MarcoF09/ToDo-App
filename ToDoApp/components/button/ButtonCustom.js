@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
-import {TouchableHighlight, Text, View, StyleSheet} from 'react-native';
+import {TouchableHighlight, Text, View} from 'react-native';
  
 export class ButtonCustom extends Component {
     render() {
