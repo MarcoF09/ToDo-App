@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
-import {StatusBar,View, TouchableOpacity, Text, TextInput, StyleSheet } from 'react-native';
+import {StatusBar,View, TouchableOpacity, Text, TextInput } from 'react-native';
 
 export class NewTask extends Component {
   constructor(props){
@@ -9,6 +9,7 @@ export class NewTask extends Component {
     this.state = {
       firstInputColor:Colors.lightGrey,
       secondInputColor:Colors.lightGrey,  
+
       firstInputText: '',
       secondInputText: '',    
     };
@@ -27,6 +28,7 @@ export class NewTask extends Component {
             alignItems: 'flex-start'}
             }>
               <Text style = {{color: Colors.white, fontSize: 17, lineHeight:20}}>Save</Text>
+
           </TouchableOpacity>
       </View>
     ),

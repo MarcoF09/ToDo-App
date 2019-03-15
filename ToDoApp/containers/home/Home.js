@@ -47,13 +47,14 @@ class Home extends Component {
         <View style={styles.headerRightContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('NewTask',{handleAddData: navigation.getParam('addData')})}>
                 <Text style = {styles.headerRightText}>+</Text>
+
             </TouchableOpacity>
         </View>
       ),
   });
 
   onPressFuction = (item) => { this.props.navigation.push('Details', {...item}) }
-  
+
   componentDidMount(){
     this.props.navigation.setParams({addData: this._handleAddData});
   }
@@ -67,6 +68,12 @@ class Home extends Component {
       this.state.data[index].status = !this.state.data[index].status;
       let dataModified = this.state.data;
       this.setState({ data: dataModified });
+
+  }
+
+  _handleClearAllDone = () => {
+      let dataModified = this.state.data.map((element) => {element.status = false; return element;});
+      this.setState({ data: dataModified });
   }
 
   render() {
@@ -79,7 +86,7 @@ class Home extends Component {
         }
         </ScrollView>
         {
-            this.state.data.length > 0 ? <ButtonCustom text = "CLEAR ALL DONE" styleButton = {styles.button}/> : <Text style = {styles.primaryText}>No task to display, please add a task!</Text>
+            this.state.data.length > 0 ? <ButtonCustom text = "CLEAR ALL DONE" _onPress = {this._handleClearAllDone} styleButton = {{alignItems: "center", width: 204,height: 48, marginTop:16}}/> : <Text style = {styles.primaryText}>No task to display, please add a task!</Text>
         }
       </View>
     );
@@ -104,3 +111,4 @@ const MainNavigator = createStackNavigator(
 );
   
 export const AppNavigator = createAppContainer(MainNavigator);
+
