@@ -71,12 +71,6 @@ class Home extends Component {
 
   }
 
-  _handleCheckBoxClick = (index) => {
-      this.state.data[index].status = !this.state.data[index].status;
-      let dataModified = this.state.data;
-      this.setState({ data: dataModified });
-  }
-
   _handleClearAllDone = () => {
       let dataModified = this.state.data.map((element) => {element.status = false; return element;});
       this.setState({ data: dataModified });
