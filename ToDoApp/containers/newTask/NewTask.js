@@ -10,15 +10,9 @@ export class NewTask extends Component {
     this.state = {
       firstInputColor:Colors.lightGrey,
       secondInputColor:Colors.lightGrey,  
-
-
       firstInputText: '',
       secondInputText: '',    
     };
-    if(Platform.OS == 'android'){
-      StatusBar.setBackgroundColor('#1f86ff');
-    }
-
   }
 
   static navigationOptions = ({navigation}) => ({
@@ -30,12 +24,9 @@ export class NewTask extends Component {
                   navigation.pop();
             }} 
             underlayColor={Colors.white} 
-            style = {{flex: 1, 
-            alignItems: 'flex-start'}
+            style = {styles.textContainer
             }>
               <Text style = {{color: Colors.white, fontSize: 17, lineHeight:20}}>Save</Text>
-
-
           </TouchableOpacity>
       </View>
     ),
@@ -92,7 +83,6 @@ export class NewTask extends Component {
           placeholder="Task title"     
           multiline = {false}
           onChangeText={(text) => this.onChangeTitle(text)}
-          onChangeText={(text) => this.firstInputOnChange(text)}
         />
         <TextInput 
           onFocus ={() => this.onFocus('second')} onBlur ={() => this.onBlur('second')}

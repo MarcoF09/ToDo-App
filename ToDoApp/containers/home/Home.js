@@ -136,6 +136,12 @@ const MainNavigator = createStackNavigator(
                 backgroundColor: Colors.customBlue,
             },
             headerTintColor: Colors.white,
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                alignSelf: 'center' ,
+                textAlign: 'center',
+                flex:1
+            },
         }
     }
 );
