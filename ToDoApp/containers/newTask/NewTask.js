@@ -3,13 +3,13 @@ import {styles} from './styles';
 import {Colors} from '../../colors/Colors';
 import {StatusBar,View, TouchableOpacity, Text, TextInput } from 'react-native';
 
+
 export class NewTask extends Component {
   constructor(props){
     super(props);
     this.state = {
       firstInputColor:Colors.lightGrey,
       secondInputColor:Colors.lightGrey,  
-
       firstInputText: '',
       secondInputText: '',    
     };
@@ -24,11 +24,9 @@ export class NewTask extends Component {
                   navigation.pop();
             }} 
             underlayColor={Colors.white} 
-            style = {{flex: 1, 
-            alignItems: 'flex-start'}
+            style = {styles.textContainer
             }>
               <Text style = {{color: Colors.white, fontSize: 17, lineHeight:20}}>Save</Text>
-
           </TouchableOpacity>
       </View>
     ),
